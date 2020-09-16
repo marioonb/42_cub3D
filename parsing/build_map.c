@@ -23,25 +23,24 @@ void			fill_map(char **map, char *line, t_map m)
 
 	m.y = 0;
 	i = 0;
-	while (i < 1)
+	while (m.y < m.la && m.x <= m.lo)
 	{
-		while (m.y < m.la)
+		if (line[0] == '\0')
 		{
-			if (line[0] == '\0')
+			while (m.y < m.la)
 			{
-				while (m.y < m.la)
-				{
-					map[m.x][m.y] = ' ';
-					m.y++;
-				}
+				map[m.x][m.y] = ' ';
+				m.y++;
 			}
-			else
-				map[m.x][m.y] = line[0];
+		}
+		else
+		{
+			map[m.x][m.y] = line[0];
 			line++;
 			m.y++;
 		}
-		i++;
 	}
+	map[m.x][m.y] = '\0';
 }
 
 /*
@@ -51,6 +50,7 @@ void			fill_map(char **map, char *line, t_map m)
 
 static void		norme(char *ligne, t_cub3d *c)
 {
+	c->map.x = 0;
 	check_line(ligne, c->map.x);
 	fill_map(c->map.tabmap, ligne, c->map);
 	c->map.x++;
@@ -64,11 +64,10 @@ void			check_map(int fd, char *ligne, t_cub3d *c)
 
 	line = NULL;
 	i = 0;
-	if (!(c->map.tabmap = malloc(sizeof(c->map.tabmap) * c->map.la)))
+	if (!(c->map.tabmap = malloc(sizeof(c->map.tabmap) * c->map.lo)))
 		ft_error_div(7);
 	while (i++ < c->map.lo)
-		if (!(c->map.tabmap[i - 1] = malloc(sizeof(*c->map.tabmap)
-		* c->map.lo)))
+		if (!(c->map.tabmap[i - 1] = malloc(c->map.la * sizeof(char) + 1)))
 			ft_error_div(7);
 	norme(ligne, c);
 	while ((ret = get_next_line(fd, &line)))
