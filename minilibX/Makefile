@@ -9,7 +9,7 @@ OBJ=$(OBJ1:.m=.o)
  CFLAGS+=-O2
 
 # add to match string put with X11 in size and position
- CFLAGS+= -DSTRINGPUTX11  -g -Wno-deprecated-declarations -fsanitize=address -g3
+ CFLAGS+= -DSTRINGPUTX11  -g -Wno-deprecated-declarations
 
 all: $(NOM)
 

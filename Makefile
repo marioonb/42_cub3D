@@ -50,7 +50,7 @@ MSG = auto save
 $(NAME):	${OBJS}
 			make -C minilibX
 			make -C libft
-			gcc -framework OpenGL -framework AppKit -fsanitize=address -g3 -g -o $(NAME) $(OBJS) $(LIBFT) $(MINILIBX)
+			gcc -framework OpenGL -framework AppKit -g -o $(NAME) $(OBJS) $(LIBFT) $(MINILIBX)
 
 all:		${NAME}
 

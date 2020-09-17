@@ -31,19 +31,19 @@ void		ft_left_right(t_cub3d *cub3d)
 	if (cub3d->move.right == 1)
 	{
 		cub3d->player.x += cub3d->player.plan_x * cub3d->speed_moove;
-		if (!player_stop(cub3d, (int)cub3d->player.x, cub3d->player.y))
+		if (!player_stop(cub3d, (int)cub3d->player.x, (int)cub3d->player.y))
 			cub3d->player.x = tmp1;
 		cub3d->player.y += cub3d->player.plan_y * cub3d->speed_moove;
-		if (!player_stop(cub3d, (int)cub3d->player.x, cub3d->player.y))
+		if (!player_stop(cub3d, (int)cub3d->player.x, (int)cub3d->player.y))
 			cub3d->player.y = tmp2;
 	}
 	if (cub3d->move.left == 1)
 	{
 		cub3d->player.x -= cub3d->player.plan_x * cub3d->speed_moove;
-		if (!player_stop(cub3d, tmp1, tmp2))
+		if (!player_stop(cub3d, (int)cub3d->player.x, (int)cub3d->player.y))
 			cub3d->player.x = tmp1;
 		cub3d->player.y -= cub3d->player.plan_y * cub3d->speed_moove;
-		if (!player_stop(cub3d, tmp1, tmp2))
+		if (!player_stop(cub3d, (int)cub3d->player.x, (int)cub3d->player.y))
 			cub3d->player.y = tmp2;
 	}
 }

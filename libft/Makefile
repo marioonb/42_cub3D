@@ -25,7 +25,7 @@ ft_lstiter_bonus.c  ft_lstmap_bonus.c
 
 OBJ = $(subst .c,.o,$(SRC))
 BONUS_OBJ = $(subst .c,.o,$(BONUS))
-CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g3 -g
+CFLAGS = -Wall -Werror -Wextra -g
 
 all: $(NAME)
 
