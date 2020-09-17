@@ -91,7 +91,7 @@ void		ft_error_div(int index)
 	if (index == 10)
 		mini_printf("please enter heigth resolution\n");
 	if (index == 11)
-		mini_printf("jump in map or so much jump after map");
+		mini_printf("jump in map or so much jump after map\n");
 	exit(EXIT_FAILURE);
 }
 

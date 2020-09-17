@@ -96,6 +96,8 @@ t_resol				resolution_parse(char *line)
 
 	i = 0;
 	result = ft_split(line, ' ');
+	if (!result[1])
+		ft_error_div(10);
 	resolution.width = ft_atoi(result[1]);
 	if (!result[2])
 		ft_error_div(10);

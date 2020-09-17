@@ -12,44 +12,46 @@
 
 #include "libft.h"
 
-static int	chercheset(char c, char *set)
+int		ft_charset(char str1, char const *charset)
 {
-	int		i;
+	int i;
 
 	i = 0;
-	while (set[i])
+	while (charset[i])
 	{
-		if (set[i] == c)
+		if (str1 != charset[i])
+			i++;
+		else
 			return (1);
-		i++;
 	}
 	return (0);
 }
 
-char		*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		i;
-	int		j;
-	int		k;
-	char	*result;
-	char	*resultat;
+	char	*str;
+	size_t	i;
+	size_t	j;
+	size_t	a;
 
 	i = 0;
-	k = 0;
-	result = (malloc(sizeof(char) * (ft_strlen(s1) + 1)));
-	if (!result)
-		return (0);
-	while (chercheset(s1[i], (char*)set))
+	j = 0;
+	a = 0;
+	if (!s1 || !set)
+		return (NULL);
+	while (s1[j])
+		j++;
+	j--;
+	while (ft_charset(s1[i], set))
 		i++;
-	j = ft_strlen(s1) - 1;
-	while (chercheset(s1[j], (char*)set))
+	if (i == ft_strlen(s1))
+		return (ft_calloc(1, sizeof(char)));
+	while (ft_charset(s1[j], set))
 		j--;
+	if (!(str = malloc(sizeof(char) * (j - i + 2))))
+		return (NULL);
 	while (i <= j)
-		result[k++] = s1[i++];
-	result[k] = '\0';
-	resultat = ft_strdup(result);
-	free(result);
-	if (!resultat)
-		return (0);
-	return (resultat);
+		str[a++] = s1[i++];
+	str[a] = '\0';
+	return ((char *)str);
 }

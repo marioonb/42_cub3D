@@ -50,7 +50,6 @@ void			fill_map(char **map, char *line, t_map m)
 
 static void		norme(char *ligne, t_cub3d *c)
 {
-	c->map.x = 0;
 	check_line(ligne, c->map.x);
 	fill_map(c->map.tabmap, ligne, c->map);
 	c->map.x++;
@@ -69,12 +68,12 @@ void			check_map(int fd, char *ligne, t_cub3d *c)
 	while (i++ < c->map.lo)
 		if (!(c->map.tabmap[i - 1] = malloc(c->map.la * sizeof(char) + 1)))
 			ft_error_div(7);
+	c->map.x = 0;
 	norme(ligne, c);
 	while ((ret = get_next_line(fd, &line)))
 	{
-		check_line(line, c->map.x);
-		fill_map(c->map.tabmap, line, c->map);
-		c->map.x++;
+		if (c->map.x < c->map.lo)
+			norme(line, c);
 		if (!line[0])
 			ft_error_div(11);
 		free(line);
