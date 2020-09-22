@@ -203,7 +203,7 @@ typedef struct	s_cub3d
 
 t_map			check_fd (int fd);
 t_map			lenght_map(int fd);
-void			ft_read_fd(int fd, t_cub3d *cub3d);
+void			ft_read_fd(int fd,t_cub3d *cub3d);
 t_resol			resolution_parse(char *line);
 void			define_texture(t_cub3d *cub3d, char *line);
 t_texture		texture_parse(char *line);

@@ -1,4 +1,4 @@
-R 10 -1000
+R -2600 1000
 NO ./texture/violet.xpm
 SO ./texture/pink.xpm
 WE ./texture/wallgray3.xpm

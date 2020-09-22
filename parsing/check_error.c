@@ -46,6 +46,8 @@ void		check_error_resolution(t_resol *resolution)
 {
 	if (!resolution->width || !resolution->heigth)
 		ft_error_fd(1, " ");
+	if (resolution->width < 0 || resolution->heigth < 0)
+		ft_error_fd(1, "xx");
 	if (resolution->width > 2560)
 		resolution->width = 2560;
 	if (resolution->heigth > 1440)
