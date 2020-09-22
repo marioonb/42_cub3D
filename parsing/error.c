@@ -34,7 +34,7 @@ void		ft_error_color_fd(int index, char c)
 	if (index == 1)
 		mini_printf("color code not numeric or wrong format for %c\n", c);
 	if (index == 2)
-		mini_printf("color code noy entered for %c\n", c);
+		mini_printf("color code not entered for %c\n", c);
 	else if (index == 4)
 		mini_printf("error color code for %c - value between 0 and 255\n", c);
 	else if (index == 5)
@@ -77,7 +77,7 @@ void		ft_error_div(int index)
 	if (index == 3)
 		mini_printf("error argument, enter one map only and option save\n");
 	if (index == 4)
-		mini_printf("please enter map\n");
+		mini_printf("please enter valid map\n");
 	if (index == 5)
 		mini_printf("bmp no create\n");
 	if (index == 6)
