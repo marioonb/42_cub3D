@@ -29,13 +29,16 @@ void			fill_map(char **map, char *line, t_map m)
 		{
 			while (m.y < m.la)
 			{
-				map[m.x][m.y] = ' ';
+				map[m.x][m.y] = '4';
 				m.y++;
 			}
 		}
 		else
 		{
-			map[m.x][m.y] = line[0];
+			if (line[0] == ' ')
+				map[m.x][m.y] = '4';
+			else
+				map[m.x][m.y] = line[0];
 			line++;
 			m.y++;
 		}

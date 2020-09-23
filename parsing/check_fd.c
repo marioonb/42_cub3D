@@ -82,8 +82,6 @@ t_map		lenght_map(int fd)
 	while (get_next_line(fd, &line) && line[0] != '\0')
 	{
 		lenght_line_actual = ft_strlen(line);
-		if (lenght_line_actual < 3)
-			ft_error_div(4);
 		if (lenght_line_actual > mapstruct.la)
 			mapstruct.la = lenght_line_actual;
 		mapstruct.lo++;

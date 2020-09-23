@@ -56,8 +56,7 @@ void		ft_error_map(int index, char a, int b, int c)
 		mini_printf("invalid map element %c, line : %d, row :  %d\n",
 		a, b + 1, c);
 	else if (index == 5)
-		mini_printf("no wall around position %d, %d or invalid character %c \n",
-			b, c, a);
+		mini_printf("no wall around position %d, %d\n", b, c);
 	else if (index == 6)
 		mini_printf("map not found or invalid\n");
 	else if (index == 7)

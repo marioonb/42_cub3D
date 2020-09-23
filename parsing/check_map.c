@@ -15,12 +15,10 @@
 static int	charactere_valide(char c)
 {
 	if (c == '1' || c == 'E' || c == '0' || c == '2' || c == 'W' || c == 'S'
-		|| c == 'N')
-		return (2);
-	else if (c == ' ')
+		|| c == 'N' || c == ' ' || c == '4')
 		return (1);
 	else
-		return (-1);
+		return (0);
 }
 
 /*
@@ -38,13 +36,15 @@ void		check_error_inside_map(char **map, t_map m)
 		y = 0;
 		while (y < m.la)
 		{
-			if (charactere_valide(map[x][y]) < 0)
+			if (charactere_valide(map[x][y]) != 1)
 				ft_error_map(4, map[x][y], x, y);
-			if (map[x][y] == '0' || map[x][y] == '2')
+			if (map[x][y] == ' ')
+				map[x][y] = '0';
+			if (map[x][y] != '1' && map[x][y] != '4')
 			{
-				if ((charactere_valide(map[x - 1][y]) < 2)
-					|| (charactere_valide(map[x + 1][y]) < 2))
-					ft_error_map(5, map[x][y], x, y);
+				if (map[x - 1][y] == '4' || map[x + 1][y] == '4' ||
+				map[x][y + 1] == '4' || map[x][y - 1] == '4')
+					ft_error_map(5, 'x', x, y);
 			}
 			y++;
 		}
@@ -68,7 +68,7 @@ void		check_error_border_map(char **map, t_map m)
 		while (y < m.la)
 		{
 			if ((x == 0 || x == m.lo - 1 || y == m.la - 1 || y == 0)
-				&& (map[x][y] != '1' && map[x][y] != ' '))
+				&& (map[x][y] != '1' && map[x][y] != '4'))
 				ft_error_map(1, ' ', x, y);
 			y++;
 		}
